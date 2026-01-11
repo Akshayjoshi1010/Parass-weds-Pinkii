@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paras ❤️ Pinki Wedding</title>
+<style>
+  body { margin:0; font-family:sans-serif; background:#f9f5f6; }
+  .hidden { display:none; }
+  .page { min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; padding:20px; text-align:center; }
+  .btn { padding:10px 20px; border:none; border-radius:15px; background:#f472b6; color:white; cursor:pointer; margin-top:20px; }
+  .btn:hover { background:#db2777; }
+  .shadow { box-shadow:0 4px 8px rgba(0,0,0,0.2); border-radius:15px; padding:10px; margin-bottom:15px; }
+  .bg-overlay { position:relative; color:white; width:100%; height:100%; }
+  .bg-overlay::before { content:''; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.4); z-index:0; }
+  .bg-content { position:relative; z-index:1; max-width:1000px; }
+  .grid { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; margin-top:20px; }
+  .grid div { cursor:pointer; text-align:center; }
+</style>
+</head>
+<body>
+
+<audio id="bg-music" src="piano.mp3" loop autoplay muted></audio>
+
+<!-- Home Page -->
+<div id="home" class="page bg-overlay" style="background-image:url('images/home-bg.jpg'); background-size:cover; background-position:center;">
+  <div class="bg-content">
+    <h1 style="font-size:3rem; text-shadow:2px 2px 4px black;">Paras ❤️ Pinki</h1>
+    <p>A journey of love begins here</p>
+    <div style="margin:20px 0; font-size:1.5rem;">
+      <span id="days">0</span> Days 
+      <span id="hours">0</span> Hours 
+      <span id="minutes">0</span> Minutes 
+      <span id="seconds">0</span> Seconds
+    </div>
+    <button class="btn" onclick="showPage('functions')">Let’s Go</button>
+  </div>
+</div>
+
+<!-- Functions Page -->
+<div id="functions" class="page hidden">
+  <h2>Choose Ceremony</h2>
+  <div class="grid">
+    <div onclick="showPage('mehndi')">
+      <img src="images/mehndi.jpg" width="200" class="shadow"><br>Mehndi
+    </div>
+    <div onclick="showPage('haldi')">
+      <img src="images/haldi.jpg" width="200" class="shadow"><br>Haldi
+    </div>
+    <div onclick="showPage('wedding')">
+      <img src="images/wedding.jpg" width="200" class="shadow"><br>Wedding
+    </div>
+  </div>
+</div>
+
+<!-- Mehndi Page -->
+<div id="mehndi" class="page hidden">
+  <h2>Mehndi Ceremony 💚</h2>
+  <p>Colors of love & laughter</p>
+  <img src="images/mehndi.jpg" width="300" class="shadow"><br>
+  <button class="btn" onclick="showPage('haldi')">Next → Haldi</button>
+</div>
+
+<!-- Haldi Page -->
+<div id="haldi" class="page hidden">
+  <h2>Haldi Ceremony ✨</h2>
+  <p>Blessings wrapped in soft yellow</p>
+  <img src="images/haldi.jpg" width="300" class="shadow"><br>
+  <button class="btn" onclick="showPage('wedding')">Next → Wedding</button>
+</div>
+
+<!-- Wedding Page -->
+<div id="wedding" class="page hidden">
+  <h2>Wedding Day ❤️</h2>
+  <p>Two hearts, one sacred promise</p>
+  <img src="images/wedding.jpg" width="300" class="shadow"><br>
+  <button class="btn" onclick="showPage('couple')">Meet the Couple</button>
+</div>
+
+<!-- Couple Page -->
+<div id="couple" class="page bg-overlay hidden" style="background-image:url('images/couple-bg.jpg'); background-size:cover; background-position:center;">
+  <div class="bg-content">
+
+    <h2 style="color:white; text-shadow:2px 2px 4px black;">Paras ❤️ Pinki</h2>
+
+    <!-- Groom -->
+    <div class="shadow" style="background:rgba(255,255,255,0.85); color:black;">
+      <h3>Groom – Paras</h3>
+      <ul style="text-align:left; margin-left:20px;">
+        <li>Virat Kohli</li>
+        <li>Brock Lesnar</li>
+        <li>More than anyone – Pinki ❤️</li>
+      </ul>
+    </div>
+
+    <!-- Bride -->
+    <div class="shadow" style="background:rgba(255,255,255,0.85); color:black;">
+      <h3>Bride – Pinki</h3>
+      <ul style="text-align:left; margin-left:20px;">
+        <li>Skin Care</li>
+        <li>Veg Biryani</li>
+        <li>Litti Chokha</li>
+        <li>More than anyone – Paras ❤️</li>
+      </ul>
+    </div>
+
+    <!-- Gift Note -->
+    <div class="shadow" style="background:rgba(255,249,240,0.85); color:black; margin-top:20px;">
+      <p>We don't say we don't want gifts, but giving an envelope full of money will bring more joy and save your time too 🎁</p>
+    </div>
+
+    <!-- Thank You -->
+    <div class="shadow" style="background:rgba(255,245,245,0.85); color:black; margin-top:20px;">
+      <p style="font-weight:bold; color:#db2777;">Thank You!</p>
+      <p>For sharing in our special day and making it memorable ❤️</p>
+      <p>Joshi Family</p>
+      <p>Upadhayay Family</p>
+      <p style="font-size:12px; margin-top:10px;">Made with love by Akshay 💖</p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // Countdown
+  const weddingDate = new Date("2026-02-10T00:00:00");
+  setInterval(()=>{
+    const now = new Date();
+    const diff = weddingDate - now;
+    document.getElementById('days').textContent = diff>0 ? Math.floor(diff/(1000*60*60*24)) : 0;
+    document.getElementById('hours').textContent = diff>0 ? Math.floor((diff/(1000*60*60))%24) : 0;
+    document.getElementById('minutes').textContent = diff>0 ? Math.floor((diff/(1000*60))%60) : 0;
+    document.getElementById('seconds').textContent = diff>0 ? Math.floor((diff/1000)%60) : 0;
+  },1000);
+
+  // Page navigation
+  function showPage(pageId){
+    ['home','functions','mehndi','haldi','wedding','couple'].forEach(id=>{
+      document.getElementById(id).classList.add('hidden');
+    });
+    document.getElementById(pageId).classList.remove('hidden');
+
+    const audio=document.getElementById('bg-music');
+    if(audio){ audio.muted=false; audio.play().catch(()=>{}); }
+  }
+</script>
+
+</body>
+</html>
+
